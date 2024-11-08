@@ -10,6 +10,7 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 // Function to fetch news data from sitemap
+// this is for thechCrunch sites
 async function fetchNewsFromSitemap(url) {
   try {
     const response = await axios.get(url);
@@ -32,13 +33,22 @@ async function fetchNewsFromSitemap(url) {
 
 // Function to save JSON data and push to GitHub
 async function updateJsonOnGithub(jsonData) {
-  fs.writeFileSync('news_data.json', JSON.stringify(jsonData, null, 2)); // Creates or updates the file
+  const filePath = 'news_data.json';
+  const oldData = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : null;
+  const newData = JSON.stringify(jsonData, null, 2);
+
+  if (oldData === newData) {
+    console.log("No changes detected in news data, skipping GitHub push.");
+    return;
+  }
+
+  fs.writeFileSync(filePath, newData);
   
   try {
     await git.add('./news_data.json'); // Stage the new/modified file
     await git.commit('Updated news data'); // Commit with a message
     await git.push('origin', 'main'); // Push to the 'main' branch (ensure branch exists)
-    console.log("Data pushed to GitHub successfully.");
+    console.log("Data pushed to GitHub successfully.", new Date().toLocaleString());
   } catch (error) {
     console.error("Error pushing data to GitHub:", error);
   }
@@ -96,13 +106,17 @@ const server = createServer(async (req, res) => {
 });
 
 // Schedule task to update news data every 20 minutes
-cron.schedule('*/20 * * * *', async () => {
+cron.schedule('*/80 * * * *', async () => {
   console.log("Fetching and updating news data...");
+  console.log("cron just run after 2 mins", new Date().toLocaleString())
   const jsonData = await scrapeAndFormatNewsData();
   await updateJsonOnGithub(jsonData);
-  console.log("this just run after 20 mins")
 });
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+console.log("Server time:", new Date().toLocaleString());
+
+
