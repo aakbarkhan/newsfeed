@@ -5,7 +5,7 @@ To explore the feasibility of building a functional app with no database, instea
 Features:
 
 Fetches live news data from RSS/XML feeds using Node.js.
-Converts and stores data in JSON format on GitHub as raw files.
+Converts and stores data in JSON format on GitHub.
 Frontend consumes and displays the data dynamically.
 Minimalistic architecture for efficient testing.
 Technologies Used: Node.js, JavaScript, HTML, CSS.
