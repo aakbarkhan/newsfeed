@@ -26,3 +26,17 @@ Emphasize the creative use of GitHub for storing and serving JSON data, which is
 Highlight Learning Goals:
 
 Frame this as an experiment to learn about lightweight architectures and efficient data handling.
+
+# Project Page on GitHub:
+Provide a clear and concise README file that explains the stack, architecture, and goals.
+Example Sections:
+
+Overview
+Tech Stack
+Setup and Installation
+How It Works (Include code snippets or a flow diagram)
+Demo or Screenshots:
+Include screenshots or a demo link showing the news feed consumption and updates.
+
+Highlight Achievements:
+State what you learned from using this tech stack and how it aligns with your problem-solving approach.
