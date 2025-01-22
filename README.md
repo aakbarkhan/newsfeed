@@ -10,6 +10,16 @@ Frontend consumes and displays the data dynamically.
 Minimalistic architecture for efficient testing.
 Technologies Used: Node.js, JavaScript, HTML, CSS.
 
+### Add Testing:
+Incorporate basic tests to validate the parsing and GitHub update process. Mention this as an enhancement for future scalability.
+Example: Use a lightweight library like Mocha or Jest for testing.
+
+Include Error Handling:
+Highlight any mechanisms you implemented to handle errors (e.g., failed API calls or Git push issues). Recruiters value robust code.
+
+Future Enhancements:
+Mention that this tech stack could be extended to integrate caching, security (e.g., GitHub API tokens), or even a hybrid approach with a lightweight database for larger-scale use cases.
+
 
 Add a Use Case:
 
